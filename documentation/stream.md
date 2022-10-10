@@ -1,6 +1,9 @@
-# Java Streams
+# Java Streams (Java 8)
 
-## Methods for creating a stream
+## Some common methods for creating a stream
+- from Array
+- from Collection
+- stream builder
 
 ### From a collection
 ```java
@@ -32,4 +35,29 @@ While using a Collectiono or an Array to build a stream, use of the builder uses
                         .add(diana)
                         .add(ralph)
                         .build();
+```
+### Using a Supplier and the generate method
+note:  generate method takes in Supplier.  The Supplier is a functional interface, so our Lambda defines the function for the supplier.  And, we specify a limit or otherwise the generation will continue indefinately or until memory runs out
+
+
+```java
+Stream<Student> streamGenerated =Stream.generate(() -> new Student("Test Student", 3.5)).limit(size);
+```
+
+### Using the iterate method
+note:  either choose to limit else the stream will iterate indefinately
+```java
+Stream<Integer> streamIterated = Stream.iterate(40, n -> n + 2).limit(max);
+```
+
+### Convert lines of file into Stream of Strings
+```java
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+        Path path = Paths.get(filePath);
+                Stream<String> streamWithCharset =
+        Files.lines(path, Charset.forName("UTF-8"));
 ```

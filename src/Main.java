@@ -9,10 +9,13 @@ import mattius.StreamIntro;
 import mattius.Student;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // lambdaExample();
         // streamFilterExample();
-        streamBuilderExample();
+        // streamBuilderExample();
+        // streamGeneratorExample();
+        // streamIterateExample();
+        streamFileReadExample();
     }
 
 
@@ -24,11 +27,32 @@ public class Main {
         LambdaIntro.printFormatted("Hello", ask);
     }
 
+    public static void streamGeneratorExample() {
+        StreamIntro intro = new StreamIntro();
+        Stream<Student> testStudents = intro.generateTestStudents(3);
+        testStudents.forEach(s -> System.out.println(s));
+    }
+
+    public static void streamIterateExample() {
+        StreamIntro intro = new StreamIntro();
+        Stream<Integer> sequence = intro.buildIntegerIteration(5);
+        sequence.forEach(s -> System.out.println(s));
+    }
+
     public static void streamBuilderExample() {
         StreamIntro intro = new StreamIntro();
         Stream<Student> myStudents = intro.buildStudents();
         // Print the stream
         myStudents.forEach(s -> System.out.println(s));
+
+    }
+
+    public static void streamFileReadExample() throws IOException {
+
+        StreamIntro intro = new StreamIntro();
+        String filePath = "./resources/blog.txt";
+        Stream<String> lines = intro.buildStreamFromFile(filePath);
+        lines.forEach(s -> System.out.println(s));
 
     }
 

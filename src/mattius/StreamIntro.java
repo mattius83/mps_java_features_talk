@@ -1,14 +1,26 @@
 package mattius;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.function.Supplier;
 
 
 
 public class StreamIntro {
+
+
+    public Stream<Student> generateTestStudents(int size) {
+        Stream<Student> streamGenerated =
+                Stream.generate(() -> new Student("Test Student", 3.5)).limit(size);
+        return streamGenerated;
+    }
 
     public Stream<Student> buildStudents() {
         Student jackie = new Student("Jackie", 3.75);
@@ -36,6 +48,18 @@ public class StreamIntro {
                 .collect(Collectors.toList());
 
         return filtered;
+    }
+
+    public Stream<Integer> buildIntegerIteration(int max) {
+        Stream<Integer> streamIterated = Stream.iterate(40, n -> n + 2).limit(max);
+        return streamIterated;
+    }
+
+    public Stream<String> buildStreamFromFile(String filePath) throws IOException {
+        Path path = Paths.get(filePath);
+        Stream<String> streamWithCharset =
+                Files.lines(path, Charset.forName("UTF-8"));
+        return streamWithCharset;
     }
 
 }
