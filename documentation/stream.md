@@ -1,9 +1,25 @@
 # Java Streams (Java 8)
 
+A Stream in Java can be defined as a sequence of elements from a source. 
+The source of elements here refers to a Collection or Array that provides data to the Stream. 
+Java streams are designed in such a way that most of the stream operations 
+(called intermediate operations) return a Stream.
+Terminal operations conclude the Stream.
+
+intermediate operation
+: operates on each element of the Stream and returns a Stream
+
+terminal operation
+: concludes the stream and returns an answer where an answer may be a primitive value, 
+a concrete type, or a void.  terminal operations always conclude the stream and are the 
+last operation in the Stream data pipeline
+
 ## Some common methods for creating a stream
 - from Array
 - from Collection
 - stream builder
+- stream generate
+- stream iterate
 
 ### From a collection
 ```java
