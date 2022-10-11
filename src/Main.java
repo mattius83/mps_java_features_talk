@@ -7,6 +7,8 @@ import mattius.LambdaIntro;
 import mattius.IStringFunction;
 import mattius.StreamIntro;
 import mattius.Student;
+import mattius.Cat;
+import mattius.Goose;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -16,9 +18,22 @@ public class Main {
         // streamGeneratorExample();
         // streamIterateExample();
         // streamFileReadExample();
-        streamPipelineExample();
+        // streamPipelineExample();
+        defaultInterfaceExample();
     }
 
+
+    public static void defaultInterfaceExample() {
+        Goose goose = new Goose();
+        goose.walk();
+        goose.sleep(7);
+        goose.migrate(1500);
+
+        Cat cat = new Cat();
+        cat.walk();
+        cat.sleep(2);
+        cat.migrate(0);
+    }
 
     public static void lambdaExample() {
         IStringFunction exclaim = (s) -> s + "!";
