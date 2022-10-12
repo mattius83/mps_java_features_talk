@@ -19,10 +19,23 @@ public class Main {
         // streamIterateExample();
         // streamFileReadExample();
         // streamPipelineExample();
-        defaultInterfaceExample();
+        // defaultInterfaceExample();
+        recordExample();
     }
 
 
+    public static void recordExample() {
+        record Person(String name, int age){};
+
+        Person sally = new Person("Sally Hopefield", 22);
+        Person margret = new Person("Margret Zutrina", 35);
+        Person sallyClone = new Person("Sally Hopefield", 22);
+        assert(sally == sallyClone);
+        System.out.println(margret);
+        int margretAge = margret.age();
+        String margretName = margret.name();
+
+    }
     public static void defaultInterfaceExample() {
         Goose goose = new Goose();
         goose.walk();
